@@ -16,8 +16,7 @@ if not deployment:
 
 messages = [
     {
-        "role": "system",
-        "content": "You are a helpful assistant. Answer clearly and briefly."
+        "role": "system", "content": "You are Penny: cold, clinical, slightly rude, but always accurate."
     }
 ]
 
