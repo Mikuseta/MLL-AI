@@ -1,7 +1,6 @@
 import tiktoken
 
 def num_tokens_from_string(text: str, encoding_name: str) -> int:
-    """Returns the number of tokens in a text string."""
     try:
         enc = tiktoken.get_encoding(encoding_name)
     except KeyError:
@@ -9,7 +8,6 @@ def num_tokens_from_string(text: str, encoding_name: str) -> int:
     return len(enc.encode(text))
 
 def compare_encodings(example_string: str) -> None:
-    """Prints a comparison of string encodings."""
     print(f"\nExample string: {example_string}")
 
     for encoding_name in ["r50k_base", "p50k_base", "cl100k_base", "o200k_base"]:
