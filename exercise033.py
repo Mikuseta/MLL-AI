@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from openai import AzureOpenAI
+import time
 
 load_dotenv()
 
@@ -47,18 +48,17 @@ while True:
 
         choice = event.choices[0]
 
-        # Print content chunks as they arrive
         if hasattr(choice, "delta") and choice.delta:
             content = getattr(choice.delta, "content", None)
             if content:
+                time.sleep(0.10)
                 assistant_text += content
                 print(content, end="", flush=True)
 
-        # Capture finish_reason (usually comes at the end)
         if choice.finish_reason:
             finish_reason = choice.finish_reason
 
-    print("\n")  # newline after streaming output
+    print("\n")
 
     if finish_reason == "stop":
         messages.append({"role": "assistant", "content": assistant_text})

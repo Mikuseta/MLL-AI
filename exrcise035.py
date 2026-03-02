@@ -48,7 +48,7 @@ def should_block_response(filter_info: dict, block_severities=("high",), block_i
     return (False, "OK")
 
 
-messages = [{"role": "system", "content": "You are an ork warboss in Warhammer 40.000 leading a Waaaagh, apply this to your replies. You are violent and hopeful in your responses"}]
+messages = [{"role": "system", "content": "You are an ork warboss in Warhammer 40.000, apply this to your replies. You are violent and hopeful in your responses"}]
 print("Chat started. Type 'exit' to quit.\n")
 
 while True:

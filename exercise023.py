@@ -28,8 +28,6 @@ sentences = [
     "The way her eyes softened when she looked at Akiko.",
     "Just the rhythm of breathing and static jazz drifting from the radio."
 ]
-
-# 🔧 tärkeä: käytä embedding-deploymentin nimeä
 embedding_deployment = os.getenv("AZURE_OPENAI_EMBEDDING_DEPLOYMENT", "text-embedding-ada-002")
 
 embeddings = []
@@ -42,11 +40,9 @@ for text in sentences:
 
 X = np.array(embeddings, dtype=float)
 
-# Similarity
 sim_matrix = cosine_similarity(X)
 print(np.round(sim_matrix, 2))
 
-# PCA plot
 pca = PCA(n_components=2)
 reduced = pca.fit_transform(X)
 
