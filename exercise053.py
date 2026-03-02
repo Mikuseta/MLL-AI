@@ -6,7 +6,7 @@ load_dotenv()
 
 client = OpenAI(
     api_key=os.getenv("AZURE_OPENAI_API_KEY"),
-    base_url=os.getenv("AZURE_OPENAI_BASE_URL"),  # .../openai/v1/
+    base_url=os.getenv("AZURE_OPENAI_BASE_URL"),
 )
 
 deployment = os.getenv("AZURE_OPENAI_DEPLOYMENT")

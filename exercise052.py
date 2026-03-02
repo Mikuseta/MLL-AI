@@ -44,21 +44,17 @@ while True:
     final_response_id = None
 
     for event in stream:
-        # Events contain different types; we want "response.output_text.delta" style chunks
         event_dict = event.model_dump() if hasattr(event, "model_dump") else dict(event)
 
-        # Try common fields for text deltas
         if event_dict.get("type") in ("response.output_text.delta", "response.output_text"):
             delta = event_dict.get("delta") or event_dict.get("text") or ""
             if delta:
                 full_text += delta
                 print(delta, end="", flush=True)
 
-        # Capture the response id when available
         if "response" in event_dict and isinstance(event_dict["response"], dict):
             final_response_id = event_dict["response"].get("id") or final_response_id
 
-        # Sometimes id is at top-level
         final_response_id = event_dict.get("response_id") or final_response_id
 
     print("\n")
