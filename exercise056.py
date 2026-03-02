@@ -45,14 +45,12 @@ raw_output = response.output_text.strip()
 print("Raw model output:")
 print(raw_output)
 
-# 🔹 1️⃣ Validate JSON
 try:
     parsed = json.loads(raw_output)
 except json.JSONDecodeError:
     print("\n❌ Invalid JSON returned by model.")
     exit()
 
-# 🔹 2️⃣ Simple schema validation
 required_fields = ["issue_type", "urgency", "suggested_action", "tone"]
 
 for field in required_fields:
@@ -62,7 +60,6 @@ for field in required_fields:
 
 print("\n✅ JSON is valid.\n")
 
-# 🔹 3️⃣ Print selected fields
 print("Issue type:", parsed["issue_type"])
 print("Urgency level:", parsed["urgency"])
 print("Suggested action:", parsed["suggested_action"])
